@@ -4,6 +4,8 @@ import numpy as np
 import snake_world
 import snake_logic
 import snake_brain
+from brains.greedy import GreedyBrain
+from brains.random import RandomBrain
 import os 
 
 # Center Screen
@@ -38,32 +40,32 @@ if __name__ == '__main__':
     GR, GC = 20,20
     world = snake_world.World(GR,GC)
 
-    # Lucy, First Snake
+    # First Snake
     snakeA = snake_logic.Snake(
         snake_brain.WorldView(world),
         color=(0,255,0))
 
     # Add Greedy Brain to Snake
-    snakeA.set_brain(snake_brain.GreedyBrain())
+    snakeA.set_brain(RandomBrain())
 
     # Lylith, Second Snake
     snakeB = snake_logic.Snake(
         snake_brain.WorldView(world),
         color=(255,0,255))
 
-    snakeB.set_brain(snake_brain.GreedyBrain())
+    snakeB.set_brain(GreedyBrain())
 
     # Lupin, the Third
     snakeC = snake_logic.Snake(
         snake_brain.WorldView(world),
         color=(0,255,255))
-    snakeC.set_brain(snake_brain.GreedyBrain())
+    snakeC.set_brain(GreedyBrain())
 
     snakeD = snake_logic.Snake(
         snake_brain.WorldView(world),
         color=(255,127,0))
 
-    snakeD.set_brain(snake_brain.GreedyBrain())
+    snakeD.set_brain(RandomBrain())
     
     # Throws snakes into the world
     world.snakes.append(snakeA)
